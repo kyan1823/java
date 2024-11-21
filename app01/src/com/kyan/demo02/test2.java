@@ -4,37 +4,43 @@ import java.util.Scanner;
 
 public class test2 {
     public static void main(String[] args) {
-        stuinfo[] arr = new stuinfo[3];
+        stuinfo[] arr = new stuinfo[1];
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("1 add,2 del,3 search,4 change");
-        switch (sc.nextInt()){
-            case 1:
-                Scanner sc1 = new Scanner(System.in);
-                System.out.println("id");
-                int a = sc1.nextInt();
-                System.out.println("name");
-                String b = sc1.next();
-                System.out.println("age");
-                int c = sc1.nextInt();
+        Scanner sc1 = new Scanner(System.in);
+        boolean exit =false;
+        do {
+            System.out.println("1 add,2 del,3 search,4 change,5 exit");
+            switch (sc.nextInt()) {
+                case 1:
+                    System.out.println("id");
+                    int a = sc1.nextInt();
+                    System.out.println("name");
+                    String b = sc1.next();
+                    System.out.println("age");
+                    int c = sc1.nextInt();
 
-                stuinfo newstu = new stuinfo(a,b,c);
+                    stuinfo newstu = new stuinfo(a, b, c);
 
-                if(checkid(a,arr)){
-                    System.out.println("The id has existed.");
-                    return;
-                }else{
-                    if(checkarr(arr) == arr.length) {
-                        arr = newarr(arr);
-                        arr[arr.length - 1] = newstu;
-                    }else{
-                        arr[checkarr(arr)] = newstu;
+                    if (checkid(a, arr)) {
+                        System.out.println("The id has existed.");
+                        return;
+                    } else {
+                        if (checkarr(arr) == arr.length) {
+                            arr = newarr(arr);
+                            arr[arr.length - 1] = newstu;
+                        } else {
+                            arr[checkarr(arr)] = newstu;
+                        }
                     }
-                }
-                printarr(arr);
-                break;
-            case 2:
-        }
+                    printarr(arr);
+                    break;
+                case 2:
+                    break;
+                case 5:
+                    exit = true;
+            }
+        }while (exit);
 
     }
 
@@ -42,16 +48,14 @@ public class test2 {
     public static boolean checkid(int id, stuinfo[] arr) {
         if (arr != null) {
             for (int i = 0; i < arr.length; i++) {
-                if(arr[i] == null){
-                    return false;
-                }else if(arr[i].getId() == id) {
-                    return true;
+                if(arr[i] != null){
+                    if(arr[i].getId() == id) {
+                        return true;
+                    }
                 }
             }
-            return false;
-        }else{
-            return false;
         }
+        return false;
     }
 
 
@@ -66,6 +70,7 @@ public class test2 {
 
     //打印数组内容
     public static void printarr(stuinfo[] arr) {
+        System.out.println();
         if (arr != null && arr.length > 0) {
             for (int i = 0; i < arr.length; i++) {
                 if (arr[i] != null) {
