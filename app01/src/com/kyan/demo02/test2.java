@@ -2,35 +2,40 @@ package com.kyan.demo02;
 
 import java.util.Scanner;
 
-public class test {
+public class test2 {
     public static void main(String[] args) {
         stuinfo[] arr = new stuinfo[3];
-        arr[0] = new stuinfo(2020001,"aaa",19);
-        arr[1] = new stuinfo(2020002,"bbb",20);
-        arr[2] = new stuinfo(2020003,"ccc",18);
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("id");
-        int a =sc.nextInt();
-        System.out.println("name");
-        String b =sc.next();
-        System.out.println("age");
-        int c =sc.nextInt();
+        System.out.println("1 add,2 del,3 search,4 change");
+        switch (sc.nextInt()){
+            case 1:
+                Scanner sc1 = new Scanner(System.in);
+                System.out.println("id");
+                int a = sc1.nextInt();
+                System.out.println("name");
+                String b = sc1.next();
+                System.out.println("age");
+                int c = sc1.nextInt();
 
-        stuinfo newstu = new stuinfo(a,b,c);
+                stuinfo newstu = new stuinfo(a,b,c);
 
-        if(checkid(a,arr)){
-            System.out.println("The id has existed.");
-            return;
-        }else{
-            if(checkarr(arr) == arr.length) {
-                arr = newarr(arr);
-                arr[arr.length - 1] = newstu;
-            }else{
-                arr[checkarr(arr)] = newstu;
-            }
+                if(checkid(a,arr)){
+                    System.out.println("The id has existed.");
+                    return;
+                }else{
+                    if(checkarr(arr) == arr.length) {
+                        arr = newarr(arr);
+                        arr[arr.length - 1] = newstu;
+                    }else{
+                        arr[checkarr(arr)] = newstu;
+                    }
+                }
+                printarr(arr);
+                break;
+            case 2:
         }
-        printarr(arr);
+
     }
 
     //检查id是否重复
@@ -48,6 +53,7 @@ public class test {
             return false;
         }
     }
+
 
     //创建一个新数组，使索引范围+1
     public static stuinfo[] newarr(stuinfo[] arr) {
