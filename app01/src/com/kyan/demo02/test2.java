@@ -57,7 +57,7 @@ public class test2 {
                     System.out.println("input id");
                     id = sc1.nextInt();
                     rs = searchid(arr, id);
-                    System.out.print("the index of arr where id = " + id +" is");
+                    System.out.print("the index of arr where id = " + id +" is ");
                     System.out.println(rs);
                     if(rs == -1) {
                         System.out.println("not found");
