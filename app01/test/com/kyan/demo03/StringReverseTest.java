@@ -1,15 +1,19 @@
 package com.kyan.demo03;
 
-import org.junit.jupiter.api.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.equalTo;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-class StringReverseTest {
+public class StringReverseTest {
 
     @Test
-    void testCheckString() {
-        StringReverse str = new StringReverse();
-        boolean test = str.checkString("asdfdsa");
-        assertTrue(test);
+    public void testCheckString() {
+        assertTrue(new StringReverse().checkString("asdfdsa"));
+    }
+    
+    @Test
+    public void testCase1() {
+    	assertThat(false,equalTo(new StringReverse().checkString("qwe")));
     }
 }
