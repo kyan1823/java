@@ -1,4 +1,5 @@
 /out/
+/.idea/
 .classpath
 .project
-/app01/app01.iml
+*.iml
