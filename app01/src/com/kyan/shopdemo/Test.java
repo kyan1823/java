@@ -1,4 +1,4 @@
-package com.kyan.shop;
+package com.kyan.shopdemo;
 
 public class Test {
     public static void main(String[] args) {
